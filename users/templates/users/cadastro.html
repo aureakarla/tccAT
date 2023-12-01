@@ -1,0 +1,94 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-cadastro">
+    <section class="container-cadastro__cadastro">
+      <img
+        src="{% static 'noticias/img/especies/caracol.png' %}"
+        alt="Imagem do caracol-gigante-africano"
+        class="imagem-especie_cadastro"
+      />
+      <div class="container-cadastro__logo">
+        <img src="{% static 'noticias/img/MEEI.png' %}" alt="Logo do site" />
+        <p>
+          O primeiro passo para o combate às espécies invasoras é o
+          conhecimento
+        </p>
+      </div>
+      <p class="container-cadastro__especie">
+        O <b>caracol-gigante-africano</b>, espécie exótica invasora presente
+        também no RN, é vetor de 2 vermes que transmitem doenças:
+        <i>Angiostrongylus costaricensis</i>, causador da angiostrongilíase
+        abdominal; e <i>Angiostrongylus cantonensis</i>, causador da
+        angiostrongilíase meningoencefálica humana.
+      </p>
+    </section>
+    <section class="container-formulario">
+      <form method="POST" class="container-formulario__form">
+        {% csrf_token %}
+        <h3>Cadastre-se no MEEI.com.br</h3>
+        <div class="container-formulario__form__input">
+          <label for="id-nome">
+            <img
+              src="{% static 'noticias/img/icones/icone-cadastro.png' %}"
+              alt="Ícone de cadastro"
+            />
+            Nome de Usuário</label
+          >
+          {{ form.username }}
+        </div>
+        <div class="container-formulario__form__input">
+          <label for="id-email">
+            <img
+              src="{% static 'noticias/img/icones/icone-cadastro.png' %}"
+              alt="Ícone de cadastro"
+            />
+            E-mail</label
+          >
+          {{ form.email }}
+        </div>
+        <div class="container-formulario__form__input">
+          <label for="id-senha">
+            <img
+              src="{% static 'noticias/img/icones/icone-cadastro.png' %}"
+              alt="Ícone de cadastro"
+            />
+            Senha</label
+          >
+          {{ form.password1 }}
+        </div>
+        <div class="container-formulario__form__input">
+          <label for="id-senha-confirm">
+            <img
+              src="{% static 'noticias/img/icones/icone-cadastro.png' %}"
+              alt="Ícone de cadastro"
+            />
+            Confirmação</label
+          >
+          {{ form.password2 }}
+        </div>
+        <input type="submit" value="Confirmar" class="botao-continuar" />
+      </form>
+      <a class="lista-telas__especie text-decoration-none" style="margin: auto;" href="{% url 'login' %}">Já possui conta? Faça login</a>
+
+      <div class="container-ajude-nos">
+        <h3>Ajude-nos</h3>
+
+        <div class="container-ajude-nos__ajuda">
+          <img
+            src="{% static 'noticias/img/icones/icone-dialogo.png' %}"
+            alt="Ícone de diálogo"
+          />
+          <a href="{% url 'depoimentos' %}" class="text-decoration-none" style="color: #1351b4;">Escreva depoimentos</a>
+        </div>
+        <div class="container-ajude-nos__ajuda">
+          <img
+            src="{% static 'noticias/img/icones/icone-dialogo.png' %}"
+            alt="Ícone de diálogo"
+          />
+          <a href="{% url 'forum' %}" class="text-decoration-none" style="color: #1351b4;">Promova discussões</a>
+        </div>
+      </div>
+    </section>
+</div>
+{% endblock content %}

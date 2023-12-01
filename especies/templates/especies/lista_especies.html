@@ -1,0 +1,63 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block title %}MEEI:Lista de Espécies{% endblock title %}
+{% block content %}
+<div class="search-container justify-content-between">
+  <input
+  type="text"
+  id="searchInput"
+  placeholder="Busque aqui"
+  oninput="filterCards()"
+  />
+  {% if request.user.is_superuser and request.user.is_staff %}
+    <a class="lista-telas__entrar text-decoration-none" href="{% url 'cadastro_especie' %}">Cadastrar especie</a>
+  {% endif %}
+  </div>
+  <section class="conteudo-especies">
+    {% for i in especies %}
+      <div class="conteudo-especies__especie">
+        <div class="conteudo-especies__especie__texto">
+          <div class="d-flex justify-content-between">
+            <h3>{{ i.nome_especie }}</h3>
+            {% if request.user.is_superuser %}
+              <div class="">
+                <a href="{% url 'exclusao_especies' i.id %}" class="text-danger text-decoration-none"><i class="ph ph-trash"></i>Deletar</a>
+                <a href="{% url 'edicao_especies' i.id  %}" class="text-primary text-decoration-none">Editar</a>
+              </div>
+            {% endif %}
+          </div>
+          <p>
+            {{ i.introducao }}
+          </p>
+        </div>
+        <img src="{{ i.imagem.url }}" alt="">
+        <a href="{% url 'detalhe_especies' i.id %}" style="display: block; text-decoration: none;">Saiba mais...</a>
+      </div>
+    {% empty %}
+      <h3>Não há especies cadastradas no momento</h3>
+    {% endfor %}
+</section>
+
+<script>
+    function filterCards() {
+      // Obtém o valor digitado no input de pesquisa
+      var searchText = document
+        .getElementById('searchInput')
+        .value.toLowerCase()
+
+      // Obtém todos os elementos de card
+      var cards = document.getElementsByClassName('conteudo-especies__especie')
+
+      // Itera sobre os cards e exibe ou oculta com base no título
+      for (var i = 0; i < cards.length; i++) {
+        var cardTitle = cards[i].querySelector('h3').textContent.toLowerCase()
+
+        if (cardTitle.includes(searchText)) {
+          cards[i].style.display = 'block' // Exibe o card
+        } else {
+          cards[i].style.display = 'none' // Oculta o card
+        }
+      }
+    }
+</script>
+{% endblock content %}
