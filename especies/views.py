@@ -35,10 +35,11 @@ def especies_edicao(request, id):
             form.save()
             return redirect('listagem_especies')
     else:
-        form = EspeciesModelForm(request.POST, request.FILES, instance=especies)
-     
+        form = EspeciesModelForm(instance=especies)
+
     context = {'form': form}
     return render(request, 'especies/especies_cadastro.html', context)
+
 
 
 @login_required(login_url='/users/accounts/login/')
