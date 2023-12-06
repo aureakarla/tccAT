@@ -9,7 +9,7 @@ class LoginForm(forms.Form):
             attrs={
                 'id': 'id-email',
                 'style': 'outline: #f6f6f6',
-                'placeholder': 'Digite aqui seu email',
+                'placeholder': 'Digite aqui seu usuário',
             }
         )
     )
