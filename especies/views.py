@@ -5,9 +5,26 @@ from django.contrib.auth.decorators import login_required
 
 
 def especies_listagem(request):
-    especies = Especies.objects.all()
-    context = {'especies': especies}
+    display_type = request.GET.get('display_type', 'cards')  # Padrão para 'cards' se não estiver definido
+
+    if display_type == 'cards':
+        especies = Especies.objects.all().order_by('nome_especie')
+        template_name = 'especies/lista_especies.html'
+    elif display_type == 'list':
+        especies = Especies.objects.all().order_by('nome_especie')
+        template_name = 'especies/lista_especies_nomes.html'  # Altere para o nome correto do template de listagem
+    else:
+        # Trate outros valores, se necessário
+        especies = Especies.objects.all().order_by('nome_especie')
+        template_name = 'especies/lista_especies.html'
+
+    context = {
+        'especies': especies,
+        'display_type': display_type,
+    }
+
     return render(request, 'especies/lista_especies.html', context)
+
 
 
 @login_required(login_url='/users/accounts/login/')

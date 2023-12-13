@@ -1,19 +1,27 @@
 {% extends "global/base.html" %}
 {% load static %}
-{% block title %}MEEI:Lista de Espécies{% endblock title %}
+{% block title %}MEEI: Lista de Espécies{% endblock title %}
 {% block content %}
-<div class="search-container justify-content-between">
-  <input
-  type="text"
-  id="searchInput"
-  placeholder="Busque aqui"
-  oninput="filterCards()"
-  />
-  {% if request.user.is_superuser and request.user.is_staff %}
-    <a class="lista-telas__entrar text-decoration-none" href="{% url 'cadastro_especie' %}">Cadastrar especie</a>
-  {% endif %}
+<div class="search-container justify-content-start gap-4 d-flex justify-content-between align-items-center">
+  <div class="">
+    <a class="lista-telas__entrar text-decoration-none me-4" href="?display_type=cards">Exibir como Cards</a>
+    <a class="lista-telas__entrar text-decoration-none" href="?display_type=list">Exibir como Listagem</a>
   </div>
-  <section class="conteudo-especies">
+  
+  <div class="">
+    <input
+    type="text"
+    id="searchInput"
+    placeholder="Busque aqui"
+    oninput="filterContent()"
+    />
+    {% if request.user.is_superuser and request.user.is_staff %}
+      <a class="lista-telas__entrar text-decoration-none" href="{% url 'cadastro_especie' %}">Cadastrar espécie</a>
+    {% endif %}
+  </div>
+</div>
+<section class="conteudo-especies">
+  {% if display_type == 'cards' %}
     {% for i in especies %}
       <div class="conteudo-especies__especie">
         <div class="conteudo-especies__especie__texto">
@@ -34,30 +42,35 @@
         <a href="{% url 'detalhe_especies' i.id %}" style="display: block; text-decoration: none;">Saiba mais...</a>
       </div>
     {% empty %}
-      <h3>Não há especies cadastradas no momento</h3>
+      <h3>Não há espécies cadastradas no momento</h3>
     {% endfor %}
+  {% elif display_type == 'list' %}
+    <ul class="list-group list-group-flush">
+      {% for i in especies %}
+        <li class="list-group-item"><a class="text-decoration-none" href="{% url 'detalhe_especies' i.id %}">{{ i.nome_especie }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 </section>
 
 <script>
-    function filterCards() {
-      // Obtém o valor digitado no input de pesquisa
-      var searchText = document
-        .getElementById('searchInput')
-        .value.toLowerCase()
+  function filterContent() {
+    // Obtém o valor digitado no input de pesquisa
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
 
-      // Obtém todos os elementos de card
-      var cards = document.getElementsByClassName('conteudo-especies__especie')
+    // Obtém todos os elementos de conteúdo (cards ou listagem)
+    var contentElements = document.querySelectorAll('.conteudo-especies__especie, ul li');
 
-      // Itera sobre os cards e exibe ou oculta com base no título
-      for (var i = 0; i < cards.length; i++) {
-        var cardTitle = cards[i].querySelector('h3').textContent.toLowerCase()
+    // Itera sobre os elementos de conteúdo e exibe ou oculta com base no título
+    contentElements.forEach(function (element) {
+      var contentTitle = element.querySelector('h3, li').textContent.toLowerCase();
 
-        if (cardTitle.includes(searchText)) {
-          cards[i].style.display = 'block' // Exibe o card
-        } else {
-          cards[i].style.display = 'none' // Oculta o card
-        }
+      if (contentTitle.includes(searchText)) {
+        element.style.display = 'block'; // Exibe o elemento
+      } else {
+        element.style.display = 'none'; // Oculta o elemento
       }
-    }
+    });
+  }
 </script>
 {% endblock content %}
