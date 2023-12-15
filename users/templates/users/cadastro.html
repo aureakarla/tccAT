@@ -1,28 +1,7 @@
 {% extends "global/base.html" %}
 {% load static %}
 {% block content %}
-<div class="container-cadastro">
-    <section class="container-cadastro__cadastro">
-      <img
-        src="{% static 'noticias/img/especies/caracol.png' %}"
-        alt="Imagem do caracol-gigante-africano"
-        class="imagem-especie_cadastro"
-      />
-      <div class="container-cadastro__logo">
-        <img src="{% static 'noticias/img/MEEI.png' %}" alt="Logo do site" />
-        <p>
-          O primeiro passo para o combate às espécies invasoras é o
-          conhecimento
-        </p>
-      </div>
-      <p class="container-cadastro__especie">
-        O <b>caracol-gigante-africano</b>, espécie exótica invasora presente
-        também no RN, é vetor de 2 vermes que transmitem doenças:
-        <i>Angiostrongylus costaricensis</i>, causador da angiostrongilíase
-        abdominal; e <i>Angiostrongylus cantonensis</i>, causador da
-        angiostrongilíase meningoencefálica humana.
-      </p>
-    </section>
+<div class="container-cadastro" >
     <section class="container-formulario">
       <form method="POST" class="container-formulario__form">
         {% csrf_token %}
@@ -63,7 +42,7 @@
               src="{% static 'noticias/img/icones/icone-cadastro.png' %}"
               alt="Ícone de cadastro"
             />
-            Confirmação</label
+            Repita sua Senha</label
           >
           {{ form.password2 }}
         </div>

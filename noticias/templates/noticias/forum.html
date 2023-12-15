@@ -13,12 +13,12 @@
             {% for i in depoimentos %}
                 <div class="conteudo-depoimentos_depoimento_usuario">
                     <span class="usuario justify-content-between">
-                    <div class="d-flex">
+                    <div class="">
                         <img
                         src="{% static 'noticias/img/icones/icone-usuario.png' %}"
                         alt="Icone Usuario"
                         />
-                        <p>{{ i.nome }}</p>
+                        <p class="d-inline"><strong>{{ i.nome }}</strong></p>
                     </div>
                     {% if request.user.is_superuser %}
                         <div class="d-flex">
@@ -48,7 +48,7 @@
                         src="{% static 'noticias/img/icones/icone-usuario.png' %}"
                         alt="Icone Usuario"
                         />
-                        <p class="d-inline">{{ i.nome }}</p>
+                        <p class="d-inline"><strong>{{ i.nome }}</strong></p>
                     </div>
                     {% if request.user.is_superuser %}
                         <div class="d-flex">

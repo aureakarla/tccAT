@@ -227,7 +227,7 @@ main > :not(.dados-estatisticos) {
 /* CADASTRO PARA ENTRAR */
 .container-cadastro {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin: 20px 0;
   gap: 15px;
 }

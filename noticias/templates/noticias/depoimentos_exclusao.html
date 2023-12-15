@@ -7,6 +7,7 @@
       <h1>Apagar Depoimento</h1>
       <p>Deseja realmente apagar esse depoimento?</p>
       <form action="" method="post">
+         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Apagar</button>
       </form>
     </div>
