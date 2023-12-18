@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-hp0rto&9)zl7l^8re5f^g_z(5ciangwnrxlzf6=q)kl3nbdgo_
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:81']
 
 
 # Application definition
@@ -82,8 +83,12 @@ WSGI_APPLICATION = 'projeto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'meei',
+        'USER': 'postgres',
+        'PASSWORD': '123456',  
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 
@@ -124,11 +129,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'static'
-# ]
+STATICFILES_DIRS = [
+     BASE_DIR / './noticias/static'
+ ]
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 
