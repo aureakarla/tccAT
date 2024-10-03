@@ -1,7 +1,7 @@
 {% extends "global/base.html" %}
 {% load static %}
 
-{% block title %}MEEI: Lista de Espécies{% endblock title %}
+{% block title %}CEEIRN: Lista de Espécies{% endblock title %}
 
 {% block content %}
 <div class="search-container gap-4 d-flex justify-content-between align-items-center">
@@ -12,7 +12,7 @@
   
   <div class="">
     {% if request.user.is_superuser and request.user.is_staff %}
-    <a class="lista-telas__entrar text-decoration-none me-4" href="{% url 'cadastro_especie' %}">Cadastrar espécie</a>
+    <a class="lista-telas__entrar text-decoration-none me-4" href="{% url 'especies_cadastro' %}">Cadastrar espécie</a>
     {% endif %}
     <input
     type="text"
@@ -32,8 +32,8 @@
             <h3>{{ i.nome_especie }}</h3>
             {% if request.user.is_superuser %}
               <div class="">
-                <a href="{% url 'exclusao_especies' i.id %}" class="text-danger text-decoration-none"><i class="ph ph-trash"></i>Deletar</a>
-                <a href="{% url 'edicao_especies' i.id  %}" class="text-primary text-decoration-none">Editar</a>
+                <a href="{% url 'especies_exclusao' i.id %}" class="text-danger text-decoration-none"><i class="ph ph-trash"></i>Deletar</a>
+                <a href="{% url 'especies_edicao' i.id  %}" class="text-primary text-decoration-none">Editar</a>
               </div>
             {% endif %}
           </div>

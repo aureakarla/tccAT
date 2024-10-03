@@ -2,9 +2,9 @@
 
 /* GERAL */
 :root {
-  --blue: #1351b4;
-  --medium-blue: #0c326f;
-  --dark-blue: #071d41;
+  --green: #02630f;
+  --medium-green: #02630f;
+  --dark-green: #02630f;
   --grey: #ccc;
 }
 
@@ -49,12 +49,12 @@ nav {
 }
 
 .lista-telas__especie {
-  color: var(--blue);
+  color: var(--green);
 }
 
 .lista-telas__entrar {
   color: white;
-  background-color: var(--blue);
+  background-color: var(--green);
   padding: 8px 20px;
   border-radius: 25px;
 }
@@ -73,7 +73,7 @@ nav {
 }
 
 .dados-estatisticos {
-  background-color: var(--medium-blue);
+  background-color: var(--medium-green);
   color: white;
   text-align: center;
   margin: 20px 0;
@@ -146,7 +146,7 @@ main > :not(.dados-estatisticos) {
 }
 
 .artigos a {
-  color: var(--medium-blue);
+  color: var(--medium-green);
 }
 
 .artigos__lista-de-artigos__links {
@@ -190,7 +190,7 @@ main > :not(.dados-estatisticos) {
 }
 
 .conteudo-especies__especie a {
-  color: var(--blue);
+  color: var(--green);
 }
 
 .conteudo-especies__especie__texto p {
@@ -319,7 +319,7 @@ input, select {
 
 .botao-continuar {
   color: white;
-  background-color: var(--blue);
+  background-color: var(--);
   margin: 0 0px 0 150px;
   padding: 8px;
   border-style: none;
@@ -388,7 +388,7 @@ a {
 
 /* FOOTER */
 footer {
-  background-color: var(--dark-blue);
+  background-color: var(--dark-green);
   display: flex;
   flex-direction: column;
   padding: 25px;

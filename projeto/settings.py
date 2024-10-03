@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'especies',
     'noticias',
     'users',
@@ -83,11 +82,11 @@ WSGI_APPLICATION = 'projeto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'meei',
         'USER': 'postgres',
-        'PASSWORD': '123456',  
-        'HOST': 'postgres',
+        'PASSWORD': '1234',  
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
