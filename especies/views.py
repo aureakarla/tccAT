@@ -12,7 +12,7 @@ def especies_listagem(request):
         template_name = 'especies/lista_especies.html'
     elif display_type == 'list':
         especies = Especies.objects.all().order_by('nome_especie')
-        template_name = 'especies/lista_especies_nomes.html'  # Altere para o nome correto do template de listagem
+        template_name = 'especies/lista_especies.html'  # Altere para o nome correto do template de listagem
     else:
         # Trate outros valores, se necessário
         especies = Especies.objects.all().order_by('nome_especie')

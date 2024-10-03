@@ -85,36 +85,28 @@
     </div>
     </div>
 </section>
-<section class="artigos">
-    <div class="artigos__artigo-destaque">
-    <img src="{% static 'noticias/img/ibama.png' %}" alt="Ibama" />
-    <h3>Fiscalização, monitoramento e controle ambiental</h3>
-    <a href="http://www.ibama.gov.br/index.php" class="text-decoration-none"
-        >Ibama fiscaliza e controla a introdução e a dispersão de espécies
-    </a>
-    </div>
 
-    <div class="artigos__lista-de-artigos">
-    <h3>Artigos e sites</h3>
-    <ul class="artigos__lista-de-artigos__links">
-        <li>
-        <a href="https://bd.institutohorus.org.br/" target="_blank"
-            class="text-decoration-none"
-            >Base de dados do Instituto Hórus de Desenvolvimento e
-            Conservação Ambiental</a
-        >
-        </li>
-        <li>
-        <a href="https://www.gov.br/icmbio/pt-br" target="_blank" class="text-decoration-none">
-            Instituto Chico Mendes de Conservação da Biodiversidade</a
-        >
-        </li>
-        <li>
-        <a href="https://www.cbd.int/" target="_blank" class="text-decoration-none">
-            Convenção sobre Diversidade Biológica</a
-        >
-        </li>
-    </ul>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-item active">
+      <a href="https://bd.institutohorus.org.br/" target="_blank">
+        <img class="d-block w-100" src="{% static 'especies/img/imagem1.jpg' %}" alt="Base de dados do Instituto Hórus de Desenvolvimento e Conservação Ambiental">
+      </a>
     </div>
-</section>
+    <div class="carousel-item">
+      <a href="https://www.gov.br/icmbio/pt-br" target="_blank">
+        <img class="d-block w-100" src="{% static 'especies/img/imagem2.jpg' %}" alt="Instituto Chico Mendes de Conservação da Biodiversidade">
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a href="https://www.cbd.int/" target="_blank">
+        <img class="d-block w-100" src="{% static 'especies/img/imagem3.jpg' %}" alt="Convenção sobre Diversidade Biológica">
+      </a>
+    </div>
+    
+
 {% endblock content %}

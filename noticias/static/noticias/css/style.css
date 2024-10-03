@@ -21,6 +21,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 a:hover {
@@ -29,7 +30,7 @@ a:hover {
 
 /* HEADER */
 header {
-  padding: 25px 25px 0;
+  padding: 25px;
 }
 
 /* MENU DE NAVEGAÇÃO */
@@ -156,13 +157,10 @@ main > :not(.dados-estatisticos) {
 
 /* CARD ESPÉCIES */
 .conteudo-especies {
-  /* display: flex;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-content: center;
   gap: 32px;
-  /* gap: 40px; */
 }
 
 @media screen and (max-width: 768px) {
@@ -184,9 +182,10 @@ main > :not(.dados-estatisticos) {
 
 .conteudo-especies__especie img {
   width: 100%;
-  height: 400px;
-  object-fit: contain;
-  flex: 1;
+  height: 200px; /* Ajuste a altura da imagem conforme necessário */
+  object-fit: cover; /* Mantém a proporção da imagem sem distorção */
+  display: block;
+  margin: auto; /* Centraliza a imagem no card */
 }
 
 .conteudo-especies__especie a {
@@ -204,35 +203,30 @@ main > :not(.dados-estatisticos) {
 .search-container {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin: 15px 0;
 }
+
 #searchInput {
   width: 350px;
 }
 
-.search-container img{
-  float: left ;
+.search-container img {
+  float: left;
 }
 
 @media screen and (max-width: 768px) {
-  .conteudo-especies {
+  .search-container {
     flex-direction: column;
+    align-items: center;
   }
-  .conteudo-especies__especie {
+  #searchInput {
     width: 100%;
   }
 }
 
 /* CADASTRO PARA ENTRAR */
-.container-cadastro {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  gap: 15px;
-}
-
-.container-login{
+.container-cadastro,
+.container-login {
   display: flex;
   justify-content: center;
   margin: 20px 0;
@@ -319,10 +313,10 @@ input, select {
 
 .botao-continuar {
   color: white;
-  background-color: var(--);
-  margin: 0 0px 0 150px;
+  background-color: var(--green);
+  margin: 0 0 0 150px;
   padding: 8px;
-  border-style: none;
+  border: none;
   border-radius: 25px;
   font-weight: bold;
   text-align: center;
@@ -335,11 +329,6 @@ input, select {
 
 .container-ajude-nos {
   line-height: 35px;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }
 
 @media screen and (max-width: 768px) {
@@ -399,27 +388,26 @@ footer a {
   color: white;
 }
 
-/*Forum MEEI*/
-
+/* FORUM MEEI */
 .title-forum {
   position: relative;
   text-align: center;
 }
 
-.usuario  {
+.usuario {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.usuario img{
+.usuario img {
   width: 39px;
   height: 39px;
 }
 
 .conteudo-depoimentos_depoimento_usuario span {
-  margin: 3px 0 3px 0 ;
-  }
+  margin: 3px 0;
+}
 
 .conteudo-depoimentos {
   display: flex;
@@ -431,18 +419,27 @@ footer a {
   background-color: whitesmoke;
   border-radius: 10px;
   box-shadow: 3px 3px 3px var(--grey);
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  width: auto;
-  height: auto;
+  padding: 15px;
+  width: 100%;
 }
 
-.depoimentos, .discussoes {
-  text-align: center;
+.conteudo-depoimentos_depoimento p {
+  text-align: justify;
 }
-.container-cadastro-centralizado{
-  display: flex;
-  justify-content: center;
+
+.textarea-depoimentos {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 2px var(--grey);
+}
+
+/* CARROSSEL */
+.carousel-item img {
+  width: 50px; /* Ajuste o tamanho conforme necessário */
+  height: 50px; /* Ajuste o tamanho conforme necessário */
+  object-fit: cover; /* Mantém a proporção da imagem sem distorção */
+  display: block;
+  margin: auto; /* Centraliza a imagem no carrossel */
 }

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'especies',
     'noticias',
     'users',
+    'accounts',  # Adicione o novo aplicativo aqui
 
     # 'ckeditor',
     # 'ckeditor_uploader',
@@ -142,3 +143,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuração do modelo de usuário personalizado

@@ -1,4 +1,4 @@
-version: '3'
+
 
 volumes:
   static_volume: {}
@@ -27,7 +27,7 @@ services:
     ports:
       - 81:80
     depends_on:
-      - django
+      - postgres
 
   postgres:
     image: postgres:16.1
