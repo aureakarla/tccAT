@@ -1,0 +1,69 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block title %}CEEIRN:Fórum{% endblock title %}
+{% block content %}
+<h1 class="title-forum">Fórum CEEIRN</h1>
+    <div class="d-flex justify-content-end">
+        <a href="{% url 'depoimentos' %}" class="lista-telas__especie text-decoration-none">Inserir depoimento ou discussão</a>
+    </div>
+    <section class="conteudo-depoimentos">
+        <div class="depoimentos" style="width: 60%;">
+        <h2>Depoimentos</h2>
+        <div class="conteudo-depoimentos_depoimento">
+            {% for i in depoimentos %}
+                <div class="conteudo-depoimentos_depoimento_usuario">
+                    <span class="usuario justify-content-between">
+                    <div class="">
+                        <img
+                        src="{% static 'noticias/img/icones/icone-usuario.png' %}"
+                        alt="Icone Usuario"
+                        />
+                        <p class="d-inline"><strong>{{ i.nome }}</strong></p>
+                    </div>
+                    {% if request.user.is_superuser %}
+                        <div class="d-flex">
+                            <a href="{% url 'depoimentos_edicao' i.id %}" class="text-primary text-decoration-none">Editar</a>
+                            <a href="{% url 'depoimentos_exclusao' i.id %}" class="text-danger text-decoration-none" style="padding-left: 1rem;">Excluir</a>
+                        </div>
+                    {% endif %}
+                    </span>
+                    <span>
+                    {{ i.relato }}</span
+                    >
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="discussoes" style="width: 60%">
+        <div class="d-flex justify-content-between">
+            <h2>Discussões</h2>
+            
+        </div>
+        <div class="conteudo-depoimentos_depoimento" style="width: 100%">
+            {% for i in discussoes %}
+                <div class="conteudo-depoimentos_depoimento_usuario justify-content-between">
+                    <span class="usuario justify-content-between">
+                    <div class="">
+                        <img
+                        src="{% static 'noticias/img/icones/icone-usuario.png' %}"
+                        alt="Icone Usuario"
+                        />
+                        <p class="d-inline"><strong>{{ i.nome }}</strong></p>
+                    </div>
+                    {% if request.user.is_superuser %}
+                        <div class="d-flex">
+                            <a href="{% url 'depoimentos_edicao' i.id %}" class="text-primary text-decoration-none">Editar</a>
+                            <a href="{% url 'depoimentos_exclusao' i.id %}" class="text-danger text-decoration-none" style="padding-left: 1rem;">Excluir</a>
+                        </div>
+                    {% endif %}
+                    </span>
+                    <span>
+                    {{ i.relato }}
+                   </span
+                    >
+                </div>    
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,436 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* GERAL */
+:root {
+  --green: #02630f;
+  --medium-green: #02630f;
+  --dark-green: #02630f;
+  --grey: #ccc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+/* HEADER */
+header {
+  padding: 25px;
+}
+
+/* MENU DE NAVEGAÇÃO */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+  .logo {
+    margin-bottom: 15px;
+  }
+}
+
+.lista-telas__especie {
+  color: var(--green);
+}
+
+.lista-telas__entrar {
+  color: white;
+  background-color: var(--green);
+  padding: 8px 20px;
+  border-radius: 25px;
+}
+
+.lista-telas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 25px;
+}
+
+/* SEÇÃO PRINCIPAL */
+.titulo {
+  text-align: center;
+}
+
+.dados-estatisticos {
+  background-color: var(--medium-green);
+  color: white;
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
+.dados-estatisticos__titulo {
+  text-align: center;
+}
+
+.dados-estatisticos__dados {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 768px) {
+  .dados-estatisticos__dados {
+    flex-direction: column;
+  }
+}
+
+.dado__numero {
+  font-size: 8em;
+  font-weight: bold;
+}
+
+.conteudos {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  gap: 15px;
+}
+
+main {
+  min-height: calc(100vh - 100px);
+}
+
+main > :not(.dados-estatisticos) {
+  padding: 20px 60px;
+}
+
+@media screen and (max-width: 768px) {
+  main > :not(.dados-estatisticos) {
+    padding: 20px 30px;
+  }
+}
+
+/* SEÇÃO DE ARTIGOS */
+.artigos {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .artigos {
+    flex-direction: column;
+  }
+  .artigos__artigo-destaque {
+    margin-bottom: 20px;
+  }
+}
+
+.artigos__artigo-destaque img {
+  width: 100%;
+}
+
+.artigos h3 {
+  text-transform: uppercase;
+}
+
+.artigos a {
+  color: var(--medium-green);
+}
+
+.artigos__lista-de-artigos__links {
+  list-style: none;
+  line-height: 35px;
+}
+
+/* CARD ESPÉCIES */
+.conteudo-especies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-content: center;
+  gap: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .conteudo-especies {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+  
+.conteudo-especies__especie {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px var(--grey);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.conteudo-especies__especie img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  flex: 1;
+}
+
+.conteudo-especies__especie a {
+  color: var(--green);
+}
+
+.conteudo-especies__especie__texto p {
+  text-align: justify;
+}
+
+.conteudo-especies__especie__imagem {
+  width: 100%;
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px 0;
+}
+
+#searchInput {
+  width: 350px;
+}
+
+.search-container img {
+  float: left;
+}
+
+@media screen and (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #searchInput {
+    width: 100%;
+  }
+}
+
+/* CADASTRO PARA ENTRAR */
+.container-cadastro,
+.container-login {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 15px;
+}
+
+.container-formulario {
+  border-radius: 10px;
+  box-shadow: 0 0 2px 2px var(--grey);
+  background-color: #ffff;
+  padding: 30px 50px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.container-formulario__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container-formulario__form__input {
+  display: flex;
+  flex-direction: column;
+}
+
+input, select {
+  border: none;
+  background-color: #ededed;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  padding: 8px;
+}
+
+.imagem-especie_cadastro {
+  width: 100%;
+}
+
+.container-cadastro__cadastro {
+  max-width: 750px;
+}
+
+.container-cadastro__logo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  text-align: justify;
+}
+
+.container-cadastro__logo img {
+  width: 75px;
+  height: 25px;
+  border-right: 1px solid var(--grey);
+  padding-right: 10px;
+}
+
+.container-cadastro__especie {
+  text-align: justify;
+  padding-top: 10px;
+}
+
+.container-formulario__form__input label {
+  font-weight: 500;
+}
+
+.container-formulario__form__input img {
+  width: 18px;
+  height: 15px;
+}
+
+.container-ajude-nos img {
+  width: 10px;
+  height: 11px;
+}
+
+.container-ajude-nos h3 {
+  border-bottom: 1px solid var(--grey);
+  padding-bottom: 5px;
+}
+
+.botao-continuar {
+  color: white;
+  background-color: var(--green);
+  margin: 0 0 0 150px;
+  padding: 8px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.botao-continuar:hover {
+  opacity: 0.8;
+}
+
+.container-ajude-nos {
+  line-height: 35px;
+}
+
+@media screen and (max-width: 768px) {
+  .container-cadastro {
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+  }
+  .container-cadastro__especie {
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+  .container-formulario {
+    width: auto;
+  }
+}
+
+/* PÁGINA ESPÉCIE */
+.dados-especie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.dados-especie img {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .dados-especie img {
+    width: 100%;
+  }
+}
+
+.conteudo-especie {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.conteudo-especie__informacao p {
+  text-align: justify;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+footer h3,
+footer a {
+  color: white;
+}
+
+/* FORUM MEEI */
+.title-forum {
+  position: relative;
+  text-align: center;
+}
+
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usuario img {
+  width: 39px;
+  height: 39px;
+}
+
+.conteudo-depoimentos_depoimento_usuario span {
+  margin: 3px 0;
+}
+
+.conteudo-depoimentos {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.conteudo-depoimentos_depoimento {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px var(--grey);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: auto;
+  height: auto;
+}
+
+.depoimentos, .discussoes {
+  text-align: center;
+}
+
+.container-cadastro-centralizado {
+  display: flex;
+  justify-content: center;
+}

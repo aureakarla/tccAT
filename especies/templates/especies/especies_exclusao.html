@@ -1,0 +1,15 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block title %}CEEIRNDepoimentos{% endblock title %}
+{% block content %}
+<div class="container-cadastro container">
+    <div class="row">
+      <h1>Apagar Espécie</h1>
+      <p>Deseja realmente apagar essa Especie? </p>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Apagar</button>
+      </form>
+    </div>
+</div>
+{% endblock content %}

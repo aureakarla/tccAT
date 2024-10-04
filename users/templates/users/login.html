@@ -1,0 +1,35 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-login">
+    <section class="container-formulario">
+        <form method="POST" class="container-formulario__form">
+            {% csrf_token %}
+            <h3>Faça login no CEEIRN.com.br</h3>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="container-formulario__form__input">
+                <label for="id-nome">
+                    <img src="{% static 'noticias/img/icones/icone-cadastro.png' %}" alt="Ícone de cadastro" />
+                    Nome de Usuário
+                </label>
+                {{ form.username }}
+            </div>
+            <div class="container-formulario__form__input">
+                <label for="id-senha">
+                    <img src="{% static 'noticias/img/icones/icone-cadastro.png' %}" alt="Ícone de cadastro" />
+                    Senha
+                </label>
+                {{ form.password }}
+            </div>
+            <input type="submit" value="Confirmar" class="botao-continuar" />
+        </form>
+        <a class="lista-telas__especie text-decoration-none" style="margin: auto;" href="{% url 'cadastro' %}">Ainda não possui conta? Cadastre-se</a>
+    </section>
+</div>
+{% endblock content %}
