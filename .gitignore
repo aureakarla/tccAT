@@ -9,4 +9,3 @@ dist/
 # Ignorar ambientes virtuais
 venv/
 myenv/
-staticfiles/noticias/img/postgresql-16.3-2-windows-x64.exe
