@@ -89,23 +89,29 @@
 <style>
   .img-fluid {
       height: 200px; /* Defina a altura desejada */
-      object-fit: cover; /* Corta as imagens para preencher o espaço */
+      width: 350px;
   }
+  .custom-margin {
+    margin-left: 15px;   /* Margem esquerda */
+    margin-right: 15px;  /* Margem direita */
+}
+
+
 </style>
 
 <div class="container">
   <div class="row mt-3 mb-4">
-      <div class="col-md-4">
+      <div class="col custom-margin">
           <a href="https://bd.institutohorus.org.br/" target="_blank">
               <img class="img-fluid" src="{% static 'especies/img/imagem1.jpg' %}" alt="Base de dados do Instituto Hórus de Desenvolvimento e Conservação Ambiental">
           </a>
       </div>
-      <div class="col-md-4">
+      <div class="col custom-margin">
           <a href="https://www.gov.br/icmbio/pt-br" target="_blank">
               <img class="img-fluid" src="{% static 'especies/img/imagem2.jpg' %}" alt="Instituto Chico Mendes de Conservação da Biodiversidade">
           </a>
       </div>
-      <div class="col-md-4">
+      <div class="col custom-margin">
           <a href="https://www.cbd.int/" target="_blank">
               <img class="img-fluid" src="{% static 'especies/img/imagem3.jpg' %}" alt="Convenção sobre Diversidade Biológica">
           </a>
