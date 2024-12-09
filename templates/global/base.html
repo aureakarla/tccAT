@@ -26,7 +26,7 @@
           <a href="{% url 'index' %}">
             <img src="{% static 'noticias/img/ceeirn.png' %}" alt="CEEIRN" class="logo" />
           </a>
-          <ul class="lista-telas">
+          <ul class="lista-telas" >
             <li>
               <a class="lista-telas__especie text-decoration-none" href="{% url 'listagem_especies' %}"
                 >Espécies</a
@@ -35,7 +35,7 @@
             <li>
               <a href="{% url 'forum' %}" class="lista-telas__especie text-decoration-none">Fórum</a>
             </li>
-            <li>
+            <li class="d-flex" style="align-items: center">
               {% if request.user.is_authenticated %}
               <span class="lista-telas__especie text-decoration-none" style="padding-right: 12px" >
                 <img

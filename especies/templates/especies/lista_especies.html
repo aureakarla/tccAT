@@ -4,21 +4,28 @@
 {% block title %}CEEIRN: Lista de Espécies{% endblock title %}
 
 {% block content %}
-<div class="search-container gap-4 d-flex justify-content-between align-items-center">
-  <div class="">
-    <a class="lista-telas__entrar text-decoration-none me-4" href="?display_type=cards">Exibir como Cards</a>
-    <a class="lista-telas__entrar text-decoration-none " href="?display_type=list">Exibir como Listagem</a>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<div class="search-container gap-4 d-flex flex-column flex-md-row justify-content-between align-items-center">
+  <!-- Links para Exibição -->
+  <div class="d-flex flex-column flex-md-row align-items-md-center mb-3 mb-md-0">
+    <a class="lista-telas__entrar text-decoration-none  me-md-4 mb-2 mb-md-0" style="text-align: center;" href="?display_type=cards">Exibir como Cards</a>
+    <a class="lista-telas__entrar text-decoration-none" style="text-align: center;"  href="?display_type=list">Exibir como Listagem</a>
   </div>
-  
-  <div class="">
+
+  <!-- Input de Busca e Cadastrar Espécie -->
+  <div class="d-flex flex-column flex-md-row align-items-md-center">
     {% if request.user.is_superuser and request.user.is_staff %}
-    <a class="lista-telas__entrar text-decoration-none me-4" href="{% url 'especies_cadastro' %}">Cadastrar espécie</a>
+    <a class="lista-telas__entrar text-decoration-none me-md-4 mb-2 mb-md-0" style="text-align: center;" href="{% url 'especies_cadastro' %}">Cadastrar espécie</a>
     {% endif %}
     <input
-    type="text"
-    id="searchInput"
-    placeholder="Busque aqui"
-    oninput="filterContent()"
+      type="text"
+      id="searchInput"
+      class="form-control"
+      placeholder="Busque aqui"
+      oninput="filterContent()"
     />
   </div>
 </div>
@@ -54,6 +61,42 @@
   {% endif %}
 </section>
 
+<div class="d-flex justify-content-center mt-4">
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      {% if especies.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ especies.previous_page_number }}&display_type={{ display_type }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&laquo;</span>
+        </li>
+      {% endif %}
+
+      {% for num in especies.paginator.page_range %}
+        <li class="page-item {% if num == especies.number %}active{% endif %}">
+          <a class="page-link" href="?page={{ num }}&display_type={{ display_type }}">{{ num }}</a>
+        </li>
+      {% endfor %}
+
+      {% if especies.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ especies.next_page_number }}&display_type={{ display_type }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&raquo;</span>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
 <script>
   function filterContent() {
     var searchText = document.getElementById('searchInput').value.toLowerCase();
@@ -70,4 +113,24 @@
     });
   }
 </script>
+
+<style>
+  .active>.page-link, .page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: #02630F;
+    border-color: #02630F;
+}
+.page-link {
+  position: relative;
+  display: block;
+  padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+  font-size: var(--bs-pagination-font-size);
+  color: #02630F;
+  text-decoration: none;
+  background-color: var(--bs-pagination-bg);
+  border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+</style>
 {% endblock content %}

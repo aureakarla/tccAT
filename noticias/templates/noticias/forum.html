@@ -2,68 +2,75 @@
 {% load static %}
 {% block title %}CEEIRN:Fórum{% endblock title %}
 {% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <h1 class="title-forum">Fórum CEEIRN</h1>
-    <div class="d-flex justify-content-end">
-        <a href="{% url 'depoimentos' %}" class="lista-telas__especie text-decoration-none">Inserir depoimento ou discussão</a>
-    </div>
-    <section class="conteudo-depoimentos">
-        <div class="depoimentos" style="width: 60%;">
-        <h2>Depoimentos</h2>
+<div class="d-flex flex-column flex-md-row align-items-md-center mb-3 mb-md-0">
+    <a href="{% url 'depoimentos' %}" class="lista-telas__entrar text-decoration-none" style="text-align: center;">Inserir depoimento ou discussão</a>
+  </div>
+  
+  <section class="conteudo-depoimentos container">
+    <div class="row">
+      <!-- Coluna: Depoimentos -->
+      <div class="col-12 col-md-6">
+        <h2 class="text-center">Depoimentos</h2>
         <div class="conteudo-depoimentos_depoimento">
-            {% for i in depoimentos %}
-                <div class="conteudo-depoimentos_depoimento_usuario">
-                    <span class="usuario justify-content-between">
-                    <div class="">
-                        <img
-                        src="{% static 'noticias/img/icones/icone-usuario.png' %}"
-                        alt="Icone Usuario"
-                        />
-                        <p class="d-inline"><strong>{{ i.nome }}</strong></p>
-                    </div>
-                    {% if request.user.is_superuser %}
-                        <div class="d-flex">
-                            <a href="{% url 'depoimentos_edicao' i.id %}" class="text-primary text-decoration-none">Editar</a>
-                            <a href="{% url 'depoimentos_exclusao' i.id %}" class="text-danger text-decoration-none" style="padding-left: 1rem;">Excluir</a>
-                        </div>
-                    {% endif %}
-                    </span>
-                    <span>
-                    {{ i.relato }}</span
-                    >
+          {% for i in depoimentos %}
+            <div class="conteudo-depoimentos_depoimento_usuario border p-3 mb-3 rounded bg-light">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img
+                    src="{% static 'noticias/img/icones/icone-usuario.png' %}"
+                    alt="Ícone Usuário"
+                    class="me-3"
+                    style="width: 40px; height: 40px;"
+                  />
+                  <p class="m-0"><strong>{{ i.nome }}</strong></p>
                 </div>
-            {% endfor %}
+                {% if request.user.is_superuser %}
+                  <div class="d-flex">
+                    <a href="{% url 'depoimentos_edicao' i.id %}" class="text-primary text-decoration-none me-3">Editar</a>
+                    <a href="{% url 'depoimentos_exclusao' i.id %}" class="text-danger text-decoration-none">Excluir</a>
+                  </div>
+                {% endif %}
+              </div>
+              <p class="mt-2">{{ i.relato }}</p>
+            </div>
+          {% endfor %}
         </div>
+      </div>
+  
+      <!-- Coluna: Discussões -->
+      <div class="col-12 col-md-6">
+        <h2 class="text-center">Discussões</h2>
+        <div class="conteudo-depoimentos_depoimento">
+          {% for i in discussoes %}
+            <div class="conteudo-depoimentos_depoimento_usuario border p-3 mb-3 rounded bg-light">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img
+                    src="{% static 'noticias/img/icones/icone-usuario.png' %}"
+                    alt="Ícone Usuário"
+                    class="me-3"
+                    style="width: 40px; height: 40px;"
+                  />
+                  <p class="m-0"><strong>{{ i.nome }}</strong></p>
+                </div>
+                {% if request.user.is_superuser %}
+                  <div class="d-flex">
+                    <a href="{% url 'depoimentos_edicao' i.id %}" class="text-primary text-decoration-none me-3">Editar</a>
+                    <a href="{% url 'depoimentos_exclusao' i.id %}" class="text-danger text-decoration-none">Excluir</a>
+                  </div>
+                {% endif %}
+              </div>
+              <p class="mt-2">{{ i.relato }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-    <div class="discussoes" style="width: 60%">
-        <div class="d-flex justify-content-between">
-            <h2>Discussões</h2>
-            
-        </div>
-        <div class="conteudo-depoimentos_depoimento" style="width: 100%">
-            {% for i in discussoes %}
-                <div class="conteudo-depoimentos_depoimento_usuario justify-content-between">
-                    <span class="usuario justify-content-between">
-                    <div class="">
-                        <img
-                        src="{% static 'noticias/img/icones/icone-usuario.png' %}"
-                        alt="Icone Usuario"
-                        />
-                        <p class="d-inline"><strong>{{ i.nome }}</strong></p>
-                    </div>
-                    {% if request.user.is_superuser %}
-                        <div class="d-flex">
-                            <a href="{% url 'depoimentos_edicao' i.id %}" class="text-primary text-decoration-none">Editar</a>
-                            <a href="{% url 'depoimentos_exclusao' i.id %}" class="text-danger text-decoration-none" style="padding-left: 1rem;">Excluir</a>
-                        </div>
-                    {% endif %}
-                    </span>
-                    <span>
-                    {{ i.relato }}
-                   </span
-                    >
-                </div>    
-            {% endfor %}
-        </div>
-    </div>
-</section>
+  </section>
+    
 {% endblock content %}

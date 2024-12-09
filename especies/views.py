@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import EspeciesModelForm
+from django.core.paginator import Paginator
 from .models import Especies
 from django.contrib.auth.decorators import login_required
 
@@ -17,6 +18,12 @@ def especies_listagem(request):
         # Trate outros valores, se necessário
         especies = Especies.objects.all().order_by('nome_especie')
         template_name = 'especies/lista_especies.html'
+
+         # Configurando a paginação
+    paginator = Paginator(especies, 3)  # Mostra 3 espécies por página
+    page_number = request.GET.get('page')  # Obtém o número da página da URL
+    especies = paginator.get_page(page_number)  # Obtém os objetos da página atual
+
 
     context = {
         'especies': especies,
